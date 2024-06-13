@@ -4,33 +4,14 @@ body {
   height: 100vh;
   background-image: url("images/background.svg");
 }
+
+/*header styling*/
+
 .header {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-.content {
-  display: grid;
-  justify-content: center;
-  grid-template-rows: 1fr 2fr;
-  margin-left: max(20%, calc(50% - 500px));
-  margin-top: 50px;
-  background-color: rgba(255, 255, 255, 0.7);
-
-  width: clamp(10%, 1000px, 60%);
-  height: 700px;
-  border-radius: 12px;
-}
-
-.footer {
-  padding: 10px;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  background-color: black;
-}
-
 input[type="text"] {
   width: 400px;
   height: 30px;
@@ -84,10 +65,19 @@ input[type="text"]:focus {
   cursor: default;
 }
 
-.button-9:focus {
-  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
-    rgba(50, 50, 93, 0.2) 0 6px 15px 0, rgba(0, 0, 0, 0.1) 0 2px 2px 0,
-    rgba(50, 151, 211, 0.3) 0 0 0 4px;
+/*content styling*/
+
+.content {
+  display: grid;
+  justify-content: center;
+  grid-template-rows: 1fr 2fr;
+  margin-left: max(20%, calc(50% - 500px));
+  margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+
+  width: clamp(10%, 1000px, 60%);
+  height: 700px;
+  border-radius: 12px;
 }
 
 #locationInfo {
@@ -108,4 +98,21 @@ input[type="text"]:focus {
   height: 125px;
   grid-column: 1/2;
   grid-row: 1/-1;
+}
+
+#forecastWeather > div {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/*footer styling*/
+
+.footer {
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  background-color: black;
 }

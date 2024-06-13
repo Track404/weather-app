@@ -1,10 +1,7 @@
 import "./style.css";
 import "normalize.css";
 
-const locationInput = document.querySelector("#location");
 const getWeatherButton = document.querySelector("#showWeatherButton");
-const locationInfo = document.querySelector("#locationInfo");
-const forecastWeather = document.querySelector("#forecastWeather");
 
 async function getWeather(locationInput) {
   try {
@@ -54,9 +51,21 @@ async function weatherInfoForecast(locationInput) {
 }
 
 getWeatherButton.addEventListener("click", async () => {
+  const locationInput = document.querySelector("#location");
+  const locationInfo = document.querySelector("#locationInfo");
+  const forecastWeather = document.querySelector("#forecastWeather");
+
+  //call function to get all weather info
   const locationChoise = await wheaterInfoNow(locationInput.value);
   const locationForecast = await weatherInfoForecast(locationInput.value);
+
+  //Show current weather
   locationInfo.innerHTML = `<div id=city>${locationChoise.location}</div><div id=tempC> T(°C): ${locationChoise.tempCelsius}</div><div id=TempF> T(°F): ${locationChoise.tempFahrenheit}</div>`;
+  const img = document.createElement("img");
+  img.src = locationChoise.icon;
+  locationInfo.appendChild(img);
+  //Show forecast weather
+  forecastWeather.innerHTML = "";
   for (let i = 0; i < locationForecast.length; i++) {
     const newDiv = document.createElement("div");
     const img = document.createElement("img");
@@ -66,10 +75,7 @@ getWeatherButton.addEventListener("click", async () => {
     newDiv.appendChild(img);
     forecastWeather.appendChild(newDiv);
   }
-  locationInput.value = "";
-  const img = document.createElement("img");
-  img.src = locationChoise.icon;
-  locationInfo.appendChild(img);
-});
 
-weatherInfoForecast("london");
+  //delete value from user input
+  locationInput.value = "";
+});
