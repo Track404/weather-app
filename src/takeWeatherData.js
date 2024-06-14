@@ -28,7 +28,5 @@ export async function weatherInfoForecast(locationInput) {
     }
 
     return forecastArray;
-  } catch (error) {
-    alert(error);
-  }
+  } catch (error) {}
 }
